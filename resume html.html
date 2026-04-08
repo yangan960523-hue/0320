@@ -42,6 +42,21 @@
             margin: 10px 0 5px;
         }
 
+        /* 🎵 音樂按鈕 */
+        #musicBtn {
+            background: #00c9a7;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #musicBtn:hover {
+            background: #00a88a;
+        }
+
         .section {
             padding: 25px 30px;
             border-bottom: 1px solid #eee;
@@ -94,8 +109,11 @@
 <div class="container">
     <div class="header">
         <img src="images/profile.jpg" alt="個人照片">
-        <h1 id="name">你的名字</h1>
+        <h1 id="name">Annie</h1>
         <p>亞洲大學學生</p>
+
+        <!-- 🎵 音樂按鈕 -->
+        <button onclick="toggleMusic()" id="musicBtn">▶ 播放音樂</button>
     </div>
 
     <div class="section info">
@@ -133,6 +151,11 @@
     </div>
 </div>
 
+<!-- 🎵 背景音樂 -->
+<audio id="bgm" loop>
+  <source src="mp3/bg.mp3.wav" type="audio/wav">
+</audio>
+
 <script>
     function copyEmail() {
         const email = document.getElementById("email").innerText;
@@ -141,8 +164,8 @@
         });
     }
 
-    // 動態打字效果（名字）
-    const nameText = "你的名字";
+    // 打字效果
+    const nameText = "Annie";
     let index = 0;
     const nameElement = document.getElementById("name");
     nameElement.innerText = "";
@@ -154,8 +177,21 @@
             setTimeout(typeEffect, 100);
         }
     }
-
     typeEffect();
+
+    // 🎵 音樂控制
+    const audio = document.getElementById("bgm");
+    const btn = document.getElementById("musicBtn");
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            btn.innerText = "⏸ 暫停音樂";
+        } else {
+            audio.pause();
+            btn.innerText = "▶ 播放音樂";
+        }
+    }
 </script>
 
 </body>
