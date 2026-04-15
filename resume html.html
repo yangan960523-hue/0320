@@ -12,7 +12,7 @@ body {
     background: #e0f2fe;
 }
 
-/* 主卡片 */
+/* 卡片 */
 .resume {
     max-width: 1100px;
     margin: 40px auto;
@@ -20,6 +20,12 @@ body {
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.resume:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.2);
 }
 
 /* 左側 */
@@ -31,7 +37,6 @@ body {
     position: relative;
 }
 
-/* 大圓弧 */
 .left::after {
     content: "";
     position: absolute;
@@ -43,7 +48,6 @@ body {
     border-radius: 50%;
 }
 
-/* 頭像（放大重點） */
 .left img {
     width: 200px;
     height: 200px;
@@ -60,6 +64,7 @@ body {
 .left h1 {
     text-align: center;
     margin: 10px 0;
+    color: black;
 }
 
 /* 區塊 */
@@ -69,12 +74,13 @@ body {
     font-size: 18px;
 }
 
-/* 語言條 */
+/* 語言條（動畫） */
 .bar {
     height: 6px;
     background: rgba(255,255,255,0.4);
     border-radius: 10px;
-    margin: 5px 0 10px;
+    margin: 5px 0 15px;
+    overflow: hidden;
 }
 
 .bar span {
@@ -82,6 +88,14 @@ body {
     height: 100%;
     background: white;
     border-radius: 10px;
+    width: 0;
+    animation: fillBar 2s ease forwards;
+}
+
+/* 動畫 */
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--width); }
 }
 
 /* 右側 */
@@ -92,7 +106,6 @@ body {
     position: relative;
 }
 
-/* 上方大圓 */
 .right::before {
     content: "";
     position: absolute;
@@ -105,17 +118,15 @@ body {
     opacity: 0.3;
 }
 
-/* 標題 */
 .block {
     margin-bottom: 40px;
 }
 
 .block h2 {
     color: #38bdf8;
-    margin-bottom: 10px;
 }
 
-/* 技能圓圈 */
+/* 技能 */
 .skills {
     display: flex;
     gap: 20px;
@@ -131,29 +142,42 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    animation: spin 4s linear infinite;
 }
 
-/* 經驗 */
-.exp-item {
-    margin-bottom: 20px;
+.circle:hover {
+    animation: spin 1s linear infinite;
 }
 
-.exp-item strong {
-    color: #0ea5e9;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* 音樂按鈕 */
+/* 按鈕 */
 #musicBtn {
-    margin-top: 15px;
-    padding: 6px 12px;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     background: white;
     color: #38bdf8;
     cursor: pointer;
+    width: 100%;
 }
 
-/* 文字 */
+.copy-btn {
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    background: #38bdf8;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
 p {
     line-height: 1.6;
 }
@@ -171,24 +195,26 @@ p {
         <h1 id="name"></h1>
         <p style="text-align:center;">亞洲大學學生</p>
 
-        <button onclick="toggleMusic()" id="musicBtn">▶ 音樂</button>
+        <button onclick="toggleMusic()" id="musicBtn">▶ 播放音樂</button>
 
         <div class="section-title">語言</div>
 
         英文
-        <div class="bar"><span style="width:80%"></span></div>
+        <div class="bar">
+            <span style="--width:80%"></span>
+        </div>
 
         中文
-        <div class="bar"><span style="width:100%"></span></div>
-
-        日文
-        <div class="bar"><span style="width:50%"></span></div>
+        <div class="bar">
+            <span style="--width:100%"></span>
+        </div>
 
         <div class="section-title">興趣</div>
         <p>🎵 音樂</p>
         <p>📸 攝影</p>
         <p>🍜 美食</p>
-
+        <p>✈️ 旅遊</p>
+        <p>🧵 手作</p>
     </div>
 
     <!-- 右 -->
@@ -197,8 +223,16 @@ p {
         <div class="block">
             <h2>介紹</h2>
             <p>
-                我熱愛設計與程式，喜歡將創意轉化為實際作品，
-                並持續提升自己的前端能力。
+                我是楊紫安，目前就讀亞洲大學，對設計與程式充滿熱情，
+                喜歡將創意轉化為實際作品。
+            </p>
+            <p>
+                平時熱愛旅遊，探索不同文化與生活方式，從中獲得靈感；
+                也喜歡手作與攝影，透過創作表達想法。
+            </p>
+            <p>
+                此外，我持續精進前端開發技能，希望未來能結合設計與技術，
+                打造具有溫度與良好使用體驗的作品。
             </p>
         </div>
 
@@ -214,42 +248,33 @@ p {
 
         <div class="block">
             <h2>經驗</h2>
-
-            <div class="exp-item">
-                <strong>2024</strong> 專題製作
-                <p>開發個人網站與UI設計</p>
-            </div>
-
-            <div class="exp-item">
-                <strong>2023</strong> 網頁作品
-                <p>完成多個前端練習專案</p>
-            </div>
-
+            <p><strong>2024</strong> 專題製作</p>
+            <p><strong>2023</strong> 網頁作品</p>
         </div>
 
         <div class="block">
             <h2>聯絡我</h2>
-            <p>Email: yangan960523@gmail.com</p>
+            <p id="email">yangan960523@gmail.com</p>
+            <button class="copy-btn" onclick="copyEmail()">📋 複製Email</button>
         </div>
 
     </div>
 
 </div>
 
-<!-- 音樂 -->
 <audio id="bgm" loop>
   <source src="mp3/bg.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 // 打字效果
-const text = "Annie";
+const text = "楊紫安";
 let i = 0;
 function typeEffect() {
     if (i < text.length) {
         document.getElementById("name").innerText += text[i];
         i++;
-        setTimeout(typeEffect, 100);
+        setTimeout(typeEffect, 120);
     }
 }
 typeEffect();
@@ -261,11 +286,18 @@ const btn = document.getElementById("musicBtn");
 function toggleMusic() {
     if (audio.paused) {
         audio.play();
-        btn.innerText = "⏸";
+        btn.innerText = "⏸ 暫停音樂";
     } else {
         audio.pause();
-        btn.innerText = "▶";
+        btn.innerText = "▶ 播放音樂";
     }
+}
+
+// 複製Email
+function copyEmail() {
+    const email = document.getElementById("email").innerText;
+    navigator.clipboard.writeText(email);
+    alert("已複製 Email！");
 }
 </script>
 
