@@ -21,7 +21,6 @@ body {
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0,0,0,0.12);
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .resume:hover {
@@ -35,10 +34,7 @@ body {
     background: linear-gradient(180deg, #7dd3fc, #38bdf8);
     color: white;
     padding: 40px 30px;
-    position: relative;
 }
-
-/* ❌ 已刪除跨左右的大圓 */
 
 /* 頭像 */
 .left img {
@@ -55,17 +51,24 @@ body {
 /* 名字 */
 .left h1 {
     text-align: center;
-    margin: 10px 0;
+    margin: 10px 0 5px;
     color: white;
     letter-spacing: 2px;
 }
 
-/* 區塊 */
+/* 學號 */
+.student-id {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+/* 區塊標題 */
 .section-title {
     margin-top: 30px;
     font-weight: bold;
     font-size: 18px;
-    opacity: 0.95;
 }
 
 /* 語言條 */
@@ -96,10 +99,7 @@ body {
     width: 60%;
     background: rgba(255,255,255,0.95);
     padding: 50px;
-    position: relative;
 }
-
-/* ❌ 已移除右側大圓背景 */
 
 .block {
     margin-bottom: 40px;
@@ -107,14 +107,12 @@ body {
 
 .block h2 {
     color: #0ea5e9;
-    margin-bottom: 10px;
 }
 
 /* 技能 */
 .skills {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .circle {
@@ -128,12 +126,10 @@ body {
     justify-content: center;
     font-weight: bold;
     animation: spin 6s linear infinite;
-    transition: 0.3s;
 }
 
 .circle:hover {
     animation: spin 1s linear infinite;
-    transform: scale(1.08);
 }
 
 @keyframes spin {
@@ -153,11 +149,6 @@ body {
     cursor: pointer;
     width: 100%;
     font-weight: bold;
-    transition: 0.3s;
-}
-
-#musicBtn:hover {
-    transform: scale(1.03);
 }
 
 .copy-btn {
@@ -169,12 +160,6 @@ body {
     color: white;
     cursor: pointer;
     width: 100%;
-    transition: 0.3s;
-}
-
-.copy-btn:hover {
-    background: #0ea5e9;
-    transform: scale(1.02);
 }
 
 p {
@@ -192,6 +177,8 @@ p {
         <img src="images/profile.jpg">
 
         <h1 id="name"></h1>
+        <div class="student-id">學號 114018026</div>
+
         <p style="text-align:center;">亞洲大學學生</p>
 
         <button onclick="toggleMusic()" id="musicBtn">▶ 播放音樂</button>
@@ -223,7 +210,6 @@ p {
             <h2>介紹</h2>
             <p>我是楊紫安，目前就讀亞洲大學，對設計與程式充滿熱情。</p>
             <p>喜歡將創意轉化為實際作品，也持續學習前端開發。</p>
-            <p>希望未來能結合設計與技術，打造更好的使用體驗。</p>
         </div>
 
         <div class="block">
@@ -259,6 +245,7 @@ p {
 <script>
 const text = "楊紫安";
 let i = 0;
+
 function typeEffect() {
     if (i < text.length) {
         document.getElementById("name").innerText += text[i];
