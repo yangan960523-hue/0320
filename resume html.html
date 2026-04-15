@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: "Segoe UI", "微軟正黑體";
-    background: #e0f2fe;
+    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
 }
 
 /* 卡片 */
@@ -19,61 +19,45 @@ body {
     display: flex;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .resume:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 40px 90px rgba(0,0,0,0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 35px 90px rgba(0,0,0,0.18);
 }
 
 /* 左側 */
 .left {
     width: 40%;
-    background: #7dd3fc;
+    background: linear-gradient(180deg, #7dd3fc, #38bdf8);
     color: white;
     padding: 40px 30px;
     position: relative;
-    z-index: 1;
 }
 
-/* 白色圓形（已修正） */
-.left::after {
-    content: "";
-    position: absolute;
-    right: -150px;
-    top: 320px; /* ✅ 往下移 */
-    width: 400px;
-    height: 400px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.7;
-    z-index: 0; /* ✅ 在最底層 */
-}
-
-/* 所有文字在最上層 */
-.left * {
-    position: relative;
-    z-index: 2;
-}
+/* ❌ 已刪除跨左右的大圓 */
 
 /* 頭像 */
 .left img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
     border-radius: 50%;
-    border: 8px solid white;
+    border: 6px solid white;
     display: block;
     margin: 0 auto 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* 名字 */
 .left h1 {
     text-align: center;
     margin: 10px 0;
-    color: black;
+    color: white;
+    letter-spacing: 2px;
 }
 
 /* 區塊 */
@@ -81,13 +65,14 @@ body {
     margin-top: 30px;
     font-weight: bold;
     font-size: 18px;
+    opacity: 0.95;
 }
 
-/* 語言條（動畫） */
+/* 語言條 */
 .bar {
-    height: 6px;
-    background: rgba(255,255,255,0.4);
-    border-radius: 10px;
+    height: 7px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
     margin: 5px 0 15px;
     overflow: hidden;
 }
@@ -96,7 +81,7 @@ body {
     display: block;
     height: 100%;
     background: white;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 0;
     animation: fillBar 2s ease forwards;
 }
@@ -109,35 +94,27 @@ body {
 /* 右側 */
 .right {
     width: 60%;
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 50px;
     position: relative;
 }
 
-.right::before {
-    content: "";
-    position: absolute;
-    top: -150px;
-    right: -150px;
-    width: 400px;
-    height: 400px;
-    background: #7dd3fc;
-    border-radius: 50%;
-    opacity: 0.3;
-}
+/* ❌ 已移除右側大圓背景 */
 
 .block {
     margin-bottom: 40px;
 }
 
 .block h2 {
-    color: #38bdf8;
+    color: #0ea5e9;
+    margin-bottom: 10px;
 }
 
 /* 技能 */
 .skills {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .circle {
@@ -150,11 +127,13 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    animation: spin 4s linear infinite;
+    animation: spin 6s linear infinite;
+    transition: 0.3s;
 }
 
 .circle:hover {
     animation: spin 1s linear infinite;
+    transform: scale(1.08);
 }
 
 @keyframes spin {
@@ -173,17 +152,29 @@ body {
     color: #38bdf8;
     cursor: pointer;
     width: 100%;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#musicBtn:hover {
+    transform: scale(1.03);
 }
 
 .copy-btn {
     margin-top: 10px;
-    padding: 8px;
+    padding: 10px;
     border: none;
     border-radius: 20px;
     background: #38bdf8;
     color: white;
     cursor: pointer;
     width: 100%;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.02);
 }
 
 p {
@@ -230,18 +221,9 @@ p {
 
         <div class="block">
             <h2>介紹</h2>
-            <p>
-                我是楊紫安，目前就讀亞洲大學，對設計與程式充滿熱情，
-                喜歡將創意轉化為實際作品。
-            </p>
-            <p>
-                平時熱愛旅遊，探索不同文化與生活方式，從中獲得靈感；
-                也喜歡手作與攝影，透過創作表達想法。
-            </p>
-            <p>
-                此外，我持續精進前端開發技能，希望未來能結合設計與技術，
-                打造具有溫度與良好使用體驗的作品。
-            </p>
+            <p>我是楊紫安，目前就讀亞洲大學，對設計與程式充滿熱情。</p>
+            <p>喜歡將創意轉化為實際作品，也持續學習前端開發。</p>
+            <p>希望未來能結合設計與技術，打造更好的使用體驗。</p>
         </div>
 
         <div class="block">
@@ -275,7 +257,6 @@ p {
 </audio>
 
 <script>
-// 打字效果
 const text = "楊紫安";
 let i = 0;
 function typeEffect() {
@@ -287,7 +268,6 @@ function typeEffect() {
 }
 typeEffect();
 
-// 音樂
 const audio = document.getElementById("bgm");
 const btn = document.getElementById("musicBtn");
 
@@ -301,7 +281,6 @@ function toggleMusic() {
     }
 }
 
-// 複製Email
 function copyEmail() {
     const email = document.getElementById("email").innerText;
     navigator.clipboard.writeText(email);
