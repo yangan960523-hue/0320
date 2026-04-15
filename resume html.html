@@ -35,19 +35,30 @@ body {
     color: white;
     padding: 40px 30px;
     position: relative;
+    z-index: 1;
 }
 
+/* 白色圓形（已修正） */
 .left::after {
     content: "";
     position: absolute;
     right: -150px;
-    top: 200px;
+    top: 320px; /* ✅ 往下移 */
     width: 400px;
     height: 400px;
     background: white;
     border-radius: 50%;
+    opacity: 0.7;
+    z-index: 0; /* ✅ 在最底層 */
 }
 
+/* 所有文字在最上層 */
+.left * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 頭像 */
 .left img {
     width: 200px;
     height: 200px;
@@ -56,8 +67,6 @@ body {
     border: 8px solid white;
     display: block;
     margin: 0 auto 20px;
-    position: relative;
-    z-index: 2;
 }
 
 /* 名字 */
@@ -92,7 +101,6 @@ body {
     animation: fillBar 2s ease forwards;
 }
 
-/* 動畫 */
 @keyframes fillBar {
     from { width: 0; }
     to { width: var(--width); }
