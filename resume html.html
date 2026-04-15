@@ -1,122 +1,87 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人履歷</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人履歷</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: #f5f7fa;
-            color: #333;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
 
-        .header {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+.header {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
 
-        .header img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            margin-bottom: 15px;
-        }
+.header img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    margin-bottom: 15px;
+}
 
-        .header h1 {
-            margin: 10px 0 5px;
-        }
+#musicBtn {
+    background: #00c9a7;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
-        /* 🎵 音樂按鈕 */
-        #musicBtn {
-            background: #00c9a7;
-            border: none;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+.section {
+    padding: 25px 30px;
+    border-bottom: 1px solid #eee;
+}
 
-        #musicBtn:hover {
-            background: #00a88a;
-        }
+.skills span {
+    display: inline-block;
+    background: #4facfe;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 5px;
+}
 
-        .section {
-            padding: 25px 30px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section h2 {
-            margin-bottom: 10px;
-            color: #4facfe;
-        }
-
-        .info p {
-            margin: 6px 0;
-        }
-
-        .skills span {
-            display: inline-block;
-            background: #4facfe;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 14px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-            color: #777;
-        }
-
-        button {
-            background: #4facfe;
-            border: none;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: #3a8ee6;
-        }
-    </style>
+.footer {
+    text-align: center;
+    padding: 15px;
+    color: #777;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
     <div class="header">
-        <img src="images/profile.jpg" alt="個人照片">
-        <h1 id="name">Annie</h1>
+        <img src="images/profile.jpg">
+        <h1 id="name"></h1>
         <p>亞洲大學學生</p>
 
-        <!-- 🎵 音樂按鈕 -->
         <button onclick="toggleMusic()" id="musicBtn">▶ 播放音樂</button>
     </div>
 
-    <div class="section info">
+    <div class="section">
         <h2>基本資料</h2>
         <p><strong>學號：</strong>AU114018026</p>
         <p><strong>Email：</strong><span id="email">yangan960523@gmail.com</span></p>
@@ -125,10 +90,7 @@
 
     <div class="section">
         <h2>自我介紹</h2>
-        <p>
-            我是一名亞洲大學的學生，對於學習新技術與自我成長充滿熱情。
-            喜歡探索設計與程式開發，期望未來能在相關領域發展。
-        </p>
+        <p>我是一名亞洲大學的學生，喜歡設計與程式開發。</p>
     </div>
 
     <div class="section">
@@ -137,63 +99,54 @@
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
-            <span>Python</span>
         </div>
     </div>
 
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學（就讀中）</p>
-    </div>
-
-    <div class="footer">
-        © 2026 個人履歷
-    </div>
+    <div class="footer">© 2026 個人履歷</div>
 </div>
 
-<!-- 🎵 背景音樂 -->
+<!-- ✅ 音樂修正 -->
 <audio id="bgm" loop>
-  <source src="mp3/bg.wav" type="audio/wav">
+  <source src="mp3/bg.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-    function copyEmail() {
-        const email = document.getElementById("email").innerText;
-        navigator.clipboard.writeText(email).then(() => {
-            alert("Email 已複製！");
+// 複製Email
+function copyEmail() {
+    const email = document.getElementById("email").innerText;
+    navigator.clipboard.writeText(email);
+    alert("已複製！");
+}
+
+// 打字效果
+const text = "Annie";
+let i = 0;
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("name").innerText += text[i];
+        i++;
+        setTimeout(typeEffect, 100);
+    }
+}
+typeEffect();
+
+// 音樂控制
+const audio = document.getElementById("bgm");
+const btn = document.getElementById("musicBtn");
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play().then(() => {
+            console.log("播放成功");
+        }).catch(err => {
+            console.log("播放失敗:", err);
         });
+        btn.innerText = "⏸ 暫停音樂";
+    } else {
+        audio.pause();
+        btn.innerText = "▶ 播放音樂";
     }
-
-    // 打字效果
-    const nameText = "Annie";
-    let index = 0;
-    const nameElement = document.getElementById("name");
-    nameElement.innerText = "";
-
-    function typeEffect() {
-        if (index < nameText.length) {
-            nameElement.innerText += nameText.charAt(index);
-            index++;
-            setTimeout(typeEffect, 100);
-        }
-    }
-    typeEffect();
-
-    // 🎵 音樂控制（已修正）
-    const audio = document.getElementById("bgm");
-    const btn = document.getElementById("musicBtn");
-
-    function toggleMusic() {
-        if (audio.paused) {
-            audio.play().catch(err => {
-                console.log("播放失敗:", err);
-            });
-            btn.innerText = "⏸ 暫停音樂";
-        } else {
-            audio.pause();
-            btn.innerText = "▶ 播放音樂";
-        }
-    }
+}
 </script>
 
 </body>
