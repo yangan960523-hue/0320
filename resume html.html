@@ -9,97 +9,105 @@
 body {
     margin: 0;
     font-family: "Segoe UI", "微軟正黑體";
-    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+    background: #e0f2fe;
 }
 
-/* 卡片 */
+/* 主卡片 */
 .resume {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 40px auto;
     display: flex;
-    border-radius: 20px;
+    border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.15);
 }
 
 /* 左側 */
 .left {
-    width: 35%;
-    background: linear-gradient(180deg, #7dd3fc, #38bdf8);
+    width: 40%;
+    background: #7dd3fc;
     color: white;
-    padding: 30px;
+    padding: 40px 30px;
     position: relative;
 }
 
-/* 圓形背景裝飾 */
-.left::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-}
-
+/* 大圓弧 */
 .left::after {
     content: "";
     position: absolute;
-    bottom: -60px;
-    left: -60px;
-    width: 180px;
-    height: 180px;
-    background: rgba(255,255,255,0.15);
+    right: -150px;
+    top: 200px;
+    width: 400px;
+    height: 400px;
+    background: white;
     border-radius: 50%;
 }
 
-/* 頭像 */
+/* 頭像（放大重點） */
 .left img {
-    width: 120px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 50%;
-    border: 4px solid white;
-    margin-bottom: 15px;
-    z-index: 1;
+    border: 8px solid white;
+    display: block;
+    margin: 0 auto 20px;
     position: relative;
+    z-index: 2;
 }
 
+/* 名字 */
 .left h1 {
+    text-align: center;
     margin: 10px 0;
 }
 
-/* 標題 */
+/* 區塊 */
 .section-title {
-    margin-top: 25px;
+    margin-top: 30px;
     font-weight: bold;
-    letter-spacing: 1px;
-    opacity: 0.9;
+    font-size: 18px;
+}
+
+/* 語言條 */
+.bar {
+    height: 6px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 10px;
+    margin: 5px 0 10px;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: white;
+    border-radius: 10px;
 }
 
 /* 右側 */
 .right {
-    width: 65%;
+    width: 60%;
     background: white;
-    padding: 40px;
+    padding: 50px;
     position: relative;
 }
 
-/* blob裝飾 */
+/* 上方大圓 */
 .right::before {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 200px;
+    top: -150px;
+    right: -150px;
+    width: 400px;
+    height: 400px;
     background: #7dd3fc;
-    border-bottom-left-radius: 100px;
+    border-radius: 50%;
     opacity: 0.3;
 }
 
-/* 區塊 */
+/* 標題 */
 .block {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .block h2 {
@@ -108,24 +116,35 @@ body {
 }
 
 /* 技能圓圈 */
-.skill-circle {
+.skills {
     display: flex;
-    align-items: center;
-    margin: 12px 0;
+    gap: 20px;
 }
 
 .circle {
-    width: 45px;
-    height: 45px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    border: 4px solid #bae6fd;
-    border-top: 4px solid #38bdf8;
-    margin-right: 10px;
+    border: 6px solid #e0f2fe;
+    border-top: 6px solid #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 經驗 */
+.exp-item {
+    margin-bottom: 20px;
+}
+
+.exp-item strong {
+    color: #0ea5e9;
 }
 
 /* 音樂按鈕 */
 #musicBtn {
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 6px 12px;
     border: none;
     border-radius: 20px;
@@ -134,14 +153,9 @@ body {
     cursor: pointer;
 }
 
-/* 文字細節 */
+/* 文字 */
 p {
     line-height: 1.6;
-    color: #374151;
-}
-
-.left p {
-    color: white;
 }
 </style>
 </head>
@@ -150,78 +164,76 @@ p {
 
 <div class="resume">
 
-    <!-- 左側 -->
+    <!-- 左 -->
     <div class="left">
         <img src="images/profile.jpg">
 
         <h1 id="name"></h1>
-        <p>亞洲大學學生</p>
+        <p style="text-align:center;">亞洲大學學生</p>
 
         <button onclick="toggleMusic()" id="musicBtn">▶ 音樂</button>
 
-        <div class="section-title">PROFILE</div>
-        <p>
-            喜歡設計與程式，持續探索不同領域，
-            讓生活與創作結合。
-        </p>
+        <div class="section-title">語言</div>
 
-        <div class="section-title">CONTACT</div>
-        <p>Email: yangan960523@gmail.com</p>
+        英文
+        <div class="bar"><span style="width:80%"></span></div>
 
-        <div class="section-title">HOBBY</div>
-        <p>🍜 美食</p>
-        <p>🎬 追劇</p>
+        中文
+        <div class="bar"><span style="width:100%"></span></div>
+
+        日文
+        <div class="bar"><span style="width:50%"></span></div>
+
+        <div class="section-title">興趣</div>
         <p>🎵 音樂</p>
         <p>📸 攝影</p>
+        <p>🍜 美食</p>
+
     </div>
 
-    <!-- 右側 -->
+    <!-- 右 -->
     <div class="right">
 
         <div class="block">
-            <h2>ABOUT ME</h2>
+            <h2>介紹</h2>
             <p>
-                我喜歡探索不同餐廳與文化，
-                並透過設計與程式創造屬於自己的作品。
+                我熱愛設計與程式，喜歡將創意轉化為實際作品，
+                並持續提升自己的前端能力。
             </p>
         </div>
 
         <div class="block">
-            <h2>SKILLS</h2>
+            <h2>技能</h2>
+            <div class="skills">
+                <div class="circle">HTML</div>
+                <div class="circle">CSS</div>
+                <div class="circle">JS</div>
+                <div class="circle">PY</div>
+            </div>
+        </div>
 
-            <div class="skill-circle">
-                <div class="circle"></div> HTML
+        <div class="block">
+            <h2>經驗</h2>
+
+            <div class="exp-item">
+                <strong>2024</strong> 專題製作
+                <p>開發個人網站與UI設計</p>
             </div>
 
-            <div class="skill-circle">
-                <div class="circle"></div> CSS
-            </div>
-
-            <div class="skill-circle">
-                <div class="circle"></div> JavaScript
-            </div>
-
-            <div class="skill-circle">
-                <div class="circle"></div> Python
+            <div class="exp-item">
+                <strong>2023</strong> 網頁作品
+                <p>完成多個前端練習專案</p>
             </div>
 
         </div>
 
         <div class="block">
-            <h2>EXPERIENCE</h2>
-            <p>2024 - 專題製作</p>
-            <p>2023 - 網頁設計作品</p>
-        </div>
-
-        <div class="block">
-            <h2>FUTURE GOAL</h2>
-            <p>
-                成為結合設計與技術的前端工程師，
-                打造有溫度的產品。
-            </p>
+            <h2>聯絡我</h2>
+            <p>Email: yangan960523@gmail.com</p>
         </div>
 
     </div>
+
 </div>
 
 <!-- 音樂 -->
