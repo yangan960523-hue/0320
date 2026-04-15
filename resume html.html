@@ -8,58 +8,98 @@
 <style>
 body {
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: #f5f7fa;
+    font-family: "Segoe UI", "微軟正黑體", sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
     color: #333;
 }
 
+/* 主卡片 */
 .container {
     max-width: 900px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 50px auto;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     overflow: hidden;
+    transition: 0.3s;
+}
+.container:hover {
+    transform: translateY(-5px);
 }
 
+/* 頭部 */
 .header {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    background: linear-gradient(135deg, #60a5fa, #93c5fd);
     color: white;
     text-align: center;
     padding: 40px 20px;
 }
 
 .header img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    object-fit: cover;
     border: 4px solid white;
+    object-fit: cover;
     margin-bottom: 15px;
 }
 
+/* 音樂按鈕 */
 #musicBtn {
-    background: #00c9a7;
+    background: white;
+    color: #3b82f6;
     border: none;
-    color: white;
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 20px;
     cursor: pointer;
     margin-top: 10px;
+    font-weight: bold;
 }
 
+/* 區塊 */
 .section {
     padding: 25px 30px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e5e7eb;
 }
 
+.section h2 {
+    color: #3b82f6;
+}
+
+/* 技能 */
 .skills span {
     display: inline-block;
-    background: #4facfe;
+    background: #60a5fa;
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
     margin: 5px;
+    font-size: 14px;
+}
+
+/* 興趣 */
+.hobby span {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+/* 按鈕 */
+button {
+    background: #60a5fa;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3b82f6;
 }
 
 .footer {
@@ -90,7 +130,14 @@ body {
 
     <div class="section">
         <h2>自我介紹</h2>
-        <p>我是一名亞洲大學的學生，喜歡設計與程式開發。</p>
+        <p>
+            我是一名亞洲大學的學生，個性開朗，喜歡探索新事物。平常除了學習程式與設計之外，
+            也熱愛吃美食、追劇放鬆，對生活充滿熱情✨。
+        </p>
+        <p>
+            我喜歡發掘不同風格的餐廳，也常關注流行影集與電影，這些興趣讓我培養出觀察力與創意，
+            希望未來能結合設計與技術，做出有趣又實用的作品。
+        </p>
     </div>
 
     <div class="section">
@@ -99,19 +146,38 @@ body {
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Python</span>
         </div>
     </div>
 
-    <div class="footer">© 2026 個人履歷</div>
+    <div class="section">
+        <h2>興趣</h2>
+        <div class="hobby">
+            <span>🍜 美食探索</span>
+            <span>🎬 追劇</span>
+            <span>🎵 聽音樂</span>
+            <span>📸 拍照</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>未來目標</h2>
+        <p>
+            希望未來能在前端設計或科技相關領域發展，
+            持續提升自己的技術能力，打造兼具美感與實用性的作品。
+        </p>
+    </div>
+
+    <div class="footer">© 2026 Annie Resume</div>
 </div>
 
-<!-- ✅ 音樂修正 -->
+<!-- 音樂 -->
 <audio id="bgm" loop>
   <source src="mp3/bg.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// 複製Email
+// Email
 function copyEmail() {
     const email = document.getElementById("email").innerText;
     navigator.clipboard.writeText(email);
@@ -119,7 +185,7 @@ function copyEmail() {
 }
 
 // 打字效果
-const text = "Annie";
+const text = "楊紫安";
 let i = 0;
 function typeEffect() {
     if (i < text.length) {
@@ -130,17 +196,13 @@ function typeEffect() {
 }
 typeEffect();
 
-// 音樂控制
+// 音樂
 const audio = document.getElementById("bgm");
 const btn = document.getElementById("musicBtn");
 
 function toggleMusic() {
     if (audio.paused) {
-        audio.play().then(() => {
-            console.log("播放成功");
-        }).catch(err => {
-            console.log("播放失敗:", err);
-        });
+        audio.play();
         btn.innerText = "⏸ 暫停音樂";
     } else {
         audio.pause();
