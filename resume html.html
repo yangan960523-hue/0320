@@ -153,7 +153,7 @@
 
 <!-- 🎵 背景音樂 -->
 <audio id="bgm" loop>
-  <source src="mp3/bg.mp3.wav" type="audio/wav">
+  <source src="mp3/bg.wav" type="audio/wav">
 </audio>
 
 <script>
@@ -179,13 +179,15 @@
     }
     typeEffect();
 
-    // 🎵 音樂控制
+    // 🎵 音樂控制（已修正）
     const audio = document.getElementById("bgm");
     const btn = document.getElementById("musicBtn");
 
     function toggleMusic() {
         if (audio.paused) {
-            audio.play();
+            audio.play().catch(err => {
+                console.log("播放失敗:", err);
+            });
             btn.innerText = "⏸ 暫停音樂";
         } else {
             audio.pause();
