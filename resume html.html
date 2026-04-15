@@ -12,6 +12,7 @@ body {
     background: linear-gradient(135deg, #e0f2fe, #f8fafc);
 }
 
+/* 外框 */
 .resume {
     max-width: 1100px;
     margin: 40px auto;
@@ -19,56 +20,55 @@ body {
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0,0,0,0.12);
-    transition: all 0.3s ease;
+    transition: 0.3s;
+    background: white;
 }
 
-.resume:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 35px 90px rgba(0,0,0,0.18);
-}
-
+/* 左側 */
 .left {
-    width: 40%;
+    width: 38%;
     background: linear-gradient(180deg, #7dd3fc, #38bdf8);
     color: white;
     padding: 40px 30px;
 }
 
+/* 頭像 */
 .left img {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
     object-fit: cover;
     border-radius: 50%;
-    border: 6px solid white;
+    border: 5px solid white;
     display: block;
-    margin: 0 auto 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin: 0 auto 15px;
 }
 
+/* 名字 */
 .left h1 {
     text-align: center;
     margin: 10px 0 5px;
-    letter-spacing: 2px;
 }
 
+/* 學號 */
 .student-id {
     text-align: center;
     font-size: 14px;
     opacity: 0.9;
-    margin-bottom: 15px;
 }
 
+/* 區塊標題 */
 .section-title {
-    margin-top: 30px;
+    margin-top: 25px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
 }
 
+/* 語言條 */
 .bar {
     height: 7px;
     background: rgba(255,255,255,0.25);
     border-radius: 20px;
-    margin: 5px 0 15px;
+    margin: 5px 0 12px;
     overflow: hidden;
 }
 
@@ -82,35 +82,38 @@ body {
 }
 
 @keyframes fillBar {
-    from { width: 0; }
     to { width: var(--width); }
 }
 
+/* 右側 */
 .right {
-    width: 60%;
-    background: rgba(255,255,255,0.95);
-    padding: 50px;
+    width: 62%;
+    padding: 45px;
+    background: #ffffff;
 }
 
 .block {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .block h2 {
     color: #0ea5e9;
+    margin-bottom: 10px;
 }
 
+/* 技能 */
 .skills {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .circle {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 6px solid #e0f2fe;
-    border-top: 6px solid #38bdf8;
+    border: 5px solid #e0f2fe;
+    border-top: 5px solid #38bdf8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,26 +121,21 @@ body {
     animation: spin 6s linear infinite;
 }
 
-.circle:hover {
-    animation: spin 1s linear infinite;
-}
-
 @keyframes spin {
-    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
+/* 按鈕 */
 #musicBtn {
-    margin-top: 20px;
-    padding: 12px 20px;
-    font-size: 16px;
+    margin-top: 15px;
+    padding: 12px;
     border: none;
     border-radius: 30px;
     background: white;
     color: #38bdf8;
-    cursor: pointer;
     width: 100%;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .copy-btn {
@@ -147,8 +145,43 @@ body {
     border-radius: 20px;
     background: #38bdf8;
     color: white;
-    cursor: pointer;
     width: 100%;
+    cursor: pointer;
+}
+
+/* =========================
+   📱 手機版 RWD
+========================= */
+@media (max-width: 768px) {
+
+    .resume {
+        flex-direction: column;
+        margin: 15px;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .left img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .right {
+        padding: 25px;
+    }
+
+    .skills {
+        justify-content: center;
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+        font-size: 14px;
+    }
 }
 
 p {
@@ -161,6 +194,7 @@ p {
 
 <div class="resume">
 
+    <!-- 左 -->
     <div class="left">
         <img src="images/profile.jpg">
 
@@ -191,28 +225,15 @@ p {
         <p>🧵 手作</p>
     </div>
 
+    <!-- 右 -->
     <div class="right">
 
         <div class="block">
             <h2>介紹</h2>
             <p>
-                我是楊紫安，目前就讀亞洲大學，對設計與程式開發充滿熱情。
-                我是一個喜歡觀察生活細節的人，常從日常小事中找到靈感，並轉化成創作想法。
-            </p>
-
-            <p>
-                個性上偏向細心與耐心，喜歡把事情做到完整與乾淨，
-                也享受一步一步完成作品的過程，而不是只追求結果。
-            </p>
-
-            <p>
-                在興趣方面，我喜歡攝影記錄生活、透過音樂放鬆思緒，
-                也熱愛旅行，去不同地方感受文化差異，讓自己保持開放的視野。
-            </p>
-
-            <p>
-                在學習上，我正在持續強化前端開發能力，希望未來能結合設計與技術，
-                打造出有溫度、使用體驗良好的網頁作品。
+                我是楊紫安，目前就讀亞洲大學，對設計與程式充滿熱情。
+                喜歡從生活中找靈感，把想法做成作品。
+                個性細心、有耐心，喜歡一步一步完成事情。
             </p>
         </div>
 
